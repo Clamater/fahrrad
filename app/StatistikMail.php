@@ -1,5 +1,12 @@
 <?php
 /**
+ * Hauptverantwortlich: Enrico Costanzo
+ * Zuarbeit:
+ *      Alice Domandl
+ *          sendMail() Methode
+ */
+
+/**
  * Created by PhpStorm.
  * User: user
  * Date: 15.01.2017

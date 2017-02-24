@@ -41,7 +41,7 @@
                     </div>
                     <div class="row">
                         <!-- Gesamtleistung des Fahrers -->
-                        <div class="col-lg-6 fahrerinformation">Gesamtleistung:</div>
+                        <div class="col-lg-6 fahrerinformation">Leistung:</div>
                         <div id="gesamtleistung-anzeige-{{ $fahrrad->id }}" class="col-lg-6 fahrerinformation"></div>
                     </div>
                     <div class="row">

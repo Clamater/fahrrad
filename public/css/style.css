@@ -1,3 +1,8 @@
+/*
+ * Hauptverantwortlich: Vanessa Ferrarello & Clara Terbeck
+ */
+
+
 /* ############################## General ##################################### */
 * {}
 
@@ -220,18 +225,27 @@ body{
     margin: 0 0 10px 0 ;
 }
 
-.highscore-medaille{
-    margin-left:0px;
+.highscore-name-wrapper{
+    width:48%;
 }
+
+.highscore-medaille-wrapper{
+    width:12%;
+}
+
+.highscore-wert-wrapper{
+    text-align: right;
+    width:40%
+}
+
 
 .highscore-name{
     line-height:40px;
-    margin-left:20px;
+    margin-left:0px;
 }
 
 .highscore-wert{
     line-height:40px;
-    margin-right:0px;
 }
 
 
@@ -743,6 +757,215 @@ body{
     }
 }
 */
+
+/* ### Media Queries ### */
+
+@media screen and (max-device-width: 1900px) {
+    .highscore-panel{
+        height: inherit;
+        min-height: 250px;
+        min-width: 250px;
+    }
+
+    .highscore-medaille-wrapper{
+        width:15%;
+        margin-right:2%;
+    }
+    .highscore-name-wrapper{
+        width:83%;
+    }
+    .highscore-wert-wrapper{
+        text-align: left;
+        width:83%;
+
+    }
+    .highscore-wert{
+        line-height: 0;
+    }
+
+    .highscore-medaille{
+        margin-top:20%;
+    }
+
+    .circle_headline{
+        font-size: 15pt;
+        width:136px;
+    }
+
+}
+
+@media screen and (max-device-width: 1600px) {
+
+    .panel-title-zd{
+        font-size: 20pt;
+    }
+
+    .panel-body-zd{
+        font-size: 16pt;
+        padding: 10px 15px 10px 15px;
+    }
+
+    .fahrrad-information-panel{
+        min-height: 250px;
+    }
+
+    .circle{
+        height: 125px;
+        margin:15% auto 0;
+        width: 125px;
+    }
+
+
+    .circle_value{
+        font-size:18pt;
+    }
+
+}
+@media screen and (max-device-width: 1300px)  {
+
+    .panel-title-zd{
+        font-size: 18pt;
+    }
+
+    .panel-body-zd{
+        font-size: 14pt;
+        padding: 10px 15px 10px 15px;
+    }
+
+    .tagesstatistik-panel{
+        min-height:400px;
+        width:40%;
+    }
+
+    .highscore-panel{
+        max-width: 280px;
+    }
+    .highscore-name-wrapper{
+        width:78%;
+        margin-left: 5%;
+    }
+    .highscore-wert-wrapper{
+        width:78%;
+        margin-left: 5%;
+    }
+
+    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
+        float:left;
+        width:50%;
+    }
+
+
+    .circle_headline{
+        font-size: 15pt;
+        width:140px;
+    }
+    .circle_value{
+        font-size:18pt;
+    }
+
+}
+
+@media screen and (max-device-width: 1065px) {
+
+    .panel{
+        min-width: 350px !important;
+        margin-bottom:20px !important;
+
+    }
+
+    .panel-title-zd{
+        font-size: 16pt;
+    }
+
+    .panel-body-zd{
+        font-size: 12pt;
+        padding: 10px 15px 10px 15px;
+    }
+
+    .tagesstatistik-panel{
+        min-width: 300px;
+        min-height:350px !important;
+    }
+
+    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
+        float:left;
+        width:50%;
+
+    }
+
+    .circle{
+        height: 100px;
+        width: 100px;
+    }
+
+    .circle_headline{
+        font-size: 14pt;
+        margin-bottom:10px;
+        width:140px;
+
+    }
+    .circle_value{
+        font-size:14pt;
+    }
+
+    .batterie-panel{
+        height:200px;
+    }
+
+}
+
+@media screen and (max-device-width: 600px) {
+    .softwaretitel{
+        font-size: 18pt;
+    }
+
+    .panel{
+        min-width: 330px !important;
+        margin-bottom:20px !important;
+
+    }
+}
+
+@media screen and (max-device-width: 320px) {
+
+    .panel{
+        min-width: 280px !important;
+        margin-bottom:20px !important;
+
+    }
+
+    .softwaretitel{
+        font-size: 16pt;
+    }
+
+
+    .fahrerinformation {
+        padding:5px !important;
+    }
+
+
+    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
+        padding-left:0px;
+    }
+
+    .circle_headline{
+        font-size: 12pt;
+        width:100px;
+    }
+    .circle_value{
+        font-size: 14pt;
+    }
+
+    .circle{
+        border-width: 3px;
+
+    }
+
+    .batterie-panel{
+        height:200px;
+    }
+
+}
 
 /* #################################### Mobile ################################## */
 #fahrrad-information-wrapper-mobile{

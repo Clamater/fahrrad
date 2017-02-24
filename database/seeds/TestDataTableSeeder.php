@@ -1,4 +1,7 @@
 <?php
+/**
+ * Hauptverantwortlich: Enrico Costanzo
+ */
 
 use App\Abschnitt;
 use App\Fahrer;
@@ -25,10 +28,10 @@ class TestDataTableSeeder extends Seeder
         #DB::statement('PRAGMA foreign_keys = OFF'); # Für Sqlite
 
         DB::table('fahrer')->truncate();
-        Fahrer::create(['name' => 'Maik Braun', 'email' => 'MaikBraun@cuvox.de']);
-        Fahrer::create(['name' => 'Petra Austerlitz']);
-        Fahrer::create(['name' => 'Jonas Nussbaum', 'groesse' => 1.85, 'gewicht' => 85]);
-        Fahrer::create(['name' => 'Juliane Seiler', 'email' => 'JulianeSeiler@cuvox.de', 'gewicht' => 87]);
+        Fahrer::create(['name' => 'Schwungvoller Stier', 'email' => 'Stier@cuvox.de']);
+        Fahrer::create(['name' => 'Lebhafter Lemming']);
+        Fahrer::create(['name' => 'Schnelle Schnecke', 'groesse' => 1.85, 'gewicht' => 85]);
+        Fahrer::create(['name' => 'Athletische Ameise', 'email' => 'Ameise@cuvox.de', 'gewicht' => 87]);
 
 
         DB::table('strecke')->truncate();
@@ -53,32 +56,17 @@ class TestDataTableSeeder extends Seeder
 
         Abschnitt::create(['strecke_id' => 2, 'hoehe' => 3, 'laenge' => 250]);
         Abschnitt::create(['strecke_id' => 2, 'hoehe' => 6, 'laenge' => 250]);
+        Abschnitt::create(['strecke_id' => 2, 'hoehe' => 6, 'laenge' => 250]);
         Abschnitt::create(['strecke_id' => 2, 'hoehe' => 9, 'laenge' => 250]);
         Abschnitt::create(['strecke_id' => 2, 'hoehe' => 9, 'laenge' => 250]);
-        Abschnitt::create(['strecke_id' => 2, 'hoehe' => 12, 'laenge' => 250]);
-        Abschnitt::create(['strecke_id' => 2, 'hoehe' => 15, 'laenge' => 250]);
+        Abschnitt::create(['strecke_id' => 2, 'hoehe' => 9, 'laenge' => 250]);
 
         Abschnitt::create(['strecke_id' => 3, 'hoehe' => 3, 'laenge' => 250]);
         Abschnitt::create(['strecke_id' => 3, 'hoehe' => 6, 'laenge' => 250]);
         Abschnitt::create(['strecke_id' => 3, 'hoehe' => 9, 'laenge' => 250]);
-        Abschnitt::create(['strecke_id' => 3, 'hoehe' => 9, 'laenge' => 250]);
         Abschnitt::create(['strecke_id' => 3, 'hoehe' => 12, 'laenge' => 250]);
-        Abschnitt::create(['strecke_id' => 3, 'hoehe' => 12, 'laenge' => 250]);
-
-        Abschnitt::create(['strecke_id' => 4, 'hoehe' => 5, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 4, 'hoehe' => 5, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 4, 'hoehe' => 10, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 4, 'hoehe' => 10, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 4, 'hoehe' => 15, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 4, 'hoehe' => 15, 'laenge' => 500]);
-
-        Abschnitt::create(['strecke_id' => 5, 'hoehe' => 5, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 5, 'hoehe' => 10, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 5, 'hoehe' => 10, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 5, 'hoehe' => 15, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 5, 'hoehe' => 20, 'laenge' => 500]);
-        Abschnitt::create(['strecke_id' => 5, 'hoehe' => 20, 'laenge' => 500]);
-
+        Abschnitt::create(['strecke_id' => 3, 'hoehe' => 15, 'laenge' => 250]);
+        Abschnitt::create(['strecke_id' => 3, 'hoehe' => 18, 'laenge' => 250]);
 
 
         DB::table('fahrrad')->truncate();

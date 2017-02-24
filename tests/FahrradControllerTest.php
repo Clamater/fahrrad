@@ -1,4 +1,7 @@
 <?php
+/**
+ * Hauptverantwortlich: Alice Domandl
+ */
 
 use App\Fahrrad;
 use App\Fahrer;

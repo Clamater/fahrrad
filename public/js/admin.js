@@ -1,3 +1,12 @@
+/*
+ * Hauptverantwortlich: Enrico Costanzo
+ * Teilverantwortlich:
+ *      Vanessa Ferrarello
+ *          Dialoge
+ *      Clara Terbeck
+ *          DataTable Initialisierung
+ */
+
 // WICHTIG: IP ändern, oder einfach localhost nehmen!
 var BASE_PATH = "http://localhost/fahrrad/public/";
 
@@ -16,18 +25,7 @@ $(document).ready(function () {
 
     setInterval(function () {
         updateFahrradKasten();
-    }, 1000);
-
-    // autocomplete admin fahrer suche
-    $("#q").autocomplete({
-        source: "search/autocomplete",
-        minLength: 1,
-        select: function (event, ui) {
-            $('#q').val(ui.item.label);
-        },
-        change: function (event, ui) {
-        }
-    });
+    }, 2000);
 
     // Dialoginitialisierungen
     function initDialog(selector, dialogClass, modal, stack) {
@@ -645,20 +643,20 @@ function initFahrradKasten(context, modus, fahrrad, fahrer){
                 '	<div id="fahrername-anzeige-' + fahrrad.id + '" class="col-md-4">' + fahrer.name + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '	<div class="col-md-6 ">Geschwindigkeit</div>' +
+                '	<div class="col-md-6 ">Geschwindigkeit:</div>' +
                 '	<div id="geschwindigkeit-anzeige-' + fahrrad.id + '" class="col-md-4">' + fahrrad.geschwindigkeit + ' km/h</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '	<div class="col-md-6">Gesamtleistung</div>' +
+                '	<div class="col-md-6">Leistung:</div>' +
                 '	<div id="istLeistung-anzeige-' + fahrrad.id + '" class="col-md-4">' + fahrrad.istLeistung + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '	<div class="col-md-6">Zurückgelegte Strecke</div>' +
+                '	<div class="col-md-6">Zurückgelegte Strecke:</div>' +
                 '	<div id="strecke-anzeige-' + fahrrad.id + '" class="col-md-4">' + fahrrad.strecke + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '   <div class="col-md-6">Fahrdauer</div>' +
-                '   <div id="fahrdauer-anzeige-{{ $fahrrad->id }}" class="col-md-4">00:00:00</div>' +
+                '   <div class="col-md-6">Fahrdauer:</div>' +
+                '   <div id="fahrdauer-anzeige-' + fahrrad.id + '" class="col-md-4">00:00:00</div>' +
                 '</div>' +
                 '<div class="row">' +
                 '	<form action="./fahrrad/'+fahrrad.id+'" method="PUT">' +

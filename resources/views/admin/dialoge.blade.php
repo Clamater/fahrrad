@@ -335,14 +335,14 @@
                 <div role="tabpanel" class="tab-pane tab-wrapper" id="tabInfo">
                     <div class="col-md-8">
                         <ul id="infobox">
-                            <li><b>Name:</b> XXX</li>
+                            <li><b>Name:</b> CyNergy </li>
                             <li><b>Beschreibung:</b> Die Anwendung dient dazu, ein gemeinsames Trainingserlebnis mit
                                 den zugehörigen Fahrradergometern und die direkte Nutzung der dabei erzeugten Energie
                                 zu ermöglichen, zu verwalten und darzustellen.</li>
                             <br>
                             <li><b>Entwickler:</b> Enrico Costanzo, Alice Domandl, Vanessa Ferrarello, Clara Terbeck </li>
                             <li><b>Support:</b> Westfälische Hochschule Gelsenkirchen</li>
-                            <li><b>Aktuelle Version:</b> v1.0.0 </li>
+                            <li><b>Aktuelle Version:</b> v1.0.1 </li>
                             <li><b>Erscheinungsjahr:</b> 2017</li>
                             <br>
                             <li><b>Libraries & Frameworks:</b>
@@ -353,7 +353,7 @@
                         </ul>
                     </div>
                     <div class="col-md-4">
-                        <!--<img src="{{--URL::asset('/img/logo.png')--}}" alt="Logo" class="softwarelogo">-->
+                        <img src="{{URL::asset('/img/cynergy_logo.png')}}" alt="CyNergy Logo" class="softwarelogo">
                     </div>
                 </div>
             </div>

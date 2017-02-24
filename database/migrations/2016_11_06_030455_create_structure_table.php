@@ -1,4 +1,7 @@
 <?php
+/**
+ * Hauptverantwortlich: Enrico Costanzo
+ */
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;

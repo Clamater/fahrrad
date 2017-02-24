@@ -1,3 +1,7 @@
+/*
+ * Hauptverantwortlich: Enrico Costanzo
+ */
+
 // Basispfad der API
 var BASE_PATH = "http://localhost/fahrrad/public/";
 
@@ -203,6 +207,22 @@ $(document).ready(function () {
     }, 1000);
 });
 
+// Für die Diagramme Leistung und Gesamtleistung werden jeweils die Farben der aktiven Fahrräder geladen
+function getDiagramColors() {
+    // '#EC87C0' // Pink
+    // '#5D9CEC' // Blau
+    // '#FFCE54' // Gelb
+
+    colors = [];
+    window.fahrrad.map(function (fahrrad) {
+        if(fahrrad.aktiv){
+            colors.push(fahrrad.color);
+        }
+    });
+
+    return colors;
+}
+
 function updateStatistik() {
     getDataFromAPI("statistik", false, function (response) {
         if (response && response.statistik) {
@@ -232,7 +252,6 @@ function updateStatistik() {
 function updateHighscore() {
     getDataFromAPI("highscore", false, function (response) {
         if (response) {
-
             try {
                 if (typeof response[0] != "undefined") {
                     $("#hs_name_1").html(response[0][0]);
@@ -248,11 +267,8 @@ function updateHighscore() {
                     $("#hs_name_3").html(response[2][0]);
                     $("#hs_val_3").html(response[2][1] + " Wh");
                 }
-
             } catch (ex) {
             }
-
-
         }
     });
 }
@@ -389,26 +405,29 @@ function updateDetails() {
             resetFahrrad();
 
             $.each(response.data.fahrrad, function (index, fahrrad) {
-                    updateFahrradKasten(fahrrad);
+                updateFahrradKasten(fahrrad);
 
-                    if (fahrrad.fahrer_id != null) {
-                        for (var i = 1; i <= window.fahrrad.length; i++) {
-                            if (fahrrad.id == i) {
-                                window.fahrrad[i-1].modus = fahrrad.modus_id;
-                                window.fahrrad[i-1].abschnitt_id = fahrrad.abschnitt_id;
-                                window.fahrrad[i-1].aktiv = true;
+                if (fahrrad.fahrer_id != null) {
+                    for (var i = 1; i <= window.fahrrad.length; i++) {
+                        if (fahrrad.id == i) {
+                            window.fahrrad[i-1].modus = fahrrad.modus_id;
+                            window.fahrrad[i-1].abschnitt_id = fahrrad.abschnitt_id;
+                            window.fahrrad[i-1].aktiv = true;
 
-                                window.fahrrad_strecke.data[i-1] = fahrrad.strecke;
-                            }
+                            window.fahrrad_strecke.data[i-1] = fahrrad.strecke;
                         }
-
-                        window.leistungData.labels.push(fahrrad.fahrer.name);
-                        window.leistungData.data.push(fahrrad.istLeistung);
-
-                        window.gesamtleistungData.absolute += fahrrad.istLeistung;
                     }
+
+                    window.leistungData.labels.push(fahrrad.fahrer.name);
+                    window.leistungData.data.push(fahrrad.istLeistung);
+
+                    window.gesamtleistungData.absolute += fahrrad.istLeistung;
                 }
-            );
+            });
+
+            var current_colors = getDiagramColors();
+            window.chart_leistung.options.colors        = current_colors;
+            window.chart_gesamtleistung.options.colors  = current_colors;
 
             for (var i = 0; i < window.fahrrad.length; i++) {
                 window.fahrrad[i].gefahrene_strecke = window.fahrrad_strecke.data[i];
@@ -516,30 +535,26 @@ function updateChartStreckeFahrer() {
 
         if (window.fahrrad[i].modus == 1) {
             if (abschnitt < strecke.points.length) {
+                if (window.strecke_fahrrad_abschnitte.indexOf(i) != -1) {
+                    if (window.strecke_fahrrad_abschnitte[i] != abschnitt) {
+                        // Abschnitt letzter merken
+                        window.strecke_fahrrad_abschnitte[i] = abschnitt;
 
-                //if (window.strecke_fahrrad_abschnitte.indexOf(i) != -1) {
-                //if (window.strecke_fahrrad_abschnitte[i] != abschnitt) {
-                // Abschnitt letzter merken
-                window.strecke_fahrrad_abschnitte[i] = abschnitt;
-
-                // Set Abschnitt to
-                // window.strecke_abschnitte[abschnitt];
-                $.ajax({
-                    url: BASE_PATH + "abschnitt",
-                    type: 'post',
-                    data: {
-                        fahrrad_id: window.fahrrad[i].id,
-                        abschnitt_id: window.strecke_abschnitte[window.strecke_fahrrad_abschnitte[i]]
-                    },
-                    async: true,
-                    success: function (data) {
+                        $.ajax({
+                            url: BASE_PATH + "abschnitt",
+                            type: 'post',
+                            data: {
+                                fahrrad_id: window.fahrrad[i].id,
+                                abschnitt_id: window.strecke_abschnitte[window.strecke_fahrrad_abschnitte[i]]
+                            },
+                            async: true,
+                            success: function (data) {
+                            }
+                        });
                     }
-                });
-                //}
-                //}
+                }
             }
         }
-
 
         if (typeof x_wert != "undefined") {
             window.fahrrad[i].x = parseFloat(x_wert);

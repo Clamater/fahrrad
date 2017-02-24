@@ -1,4 +1,8 @@
 <?php
+/**
+ * Hauptverantwortlich: Alice Domandl
+ */
+
 use App\Fahrer;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Http\Controllers\FahrerController;

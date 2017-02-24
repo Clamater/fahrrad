@@ -1,4 +1,8 @@
 <?php
+/**
+ * Hauptverantwortlich: Alice Domandl
+ */
+
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
