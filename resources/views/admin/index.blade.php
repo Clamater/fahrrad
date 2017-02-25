@@ -1,3 +1,6 @@
+<!--
+ Hauptverantwortlich: Clara Terbeck
+-->
 @extends("layouts.app")
 
 @section("title")

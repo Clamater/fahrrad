@@ -1,3 +1,6 @@
+<!--
+ Hauptverantwortlich: Clara Terbeck
+-->
 <div class="col-md-6">
     <!-- Panel der Fahrertabelle -->
     <div class="panel panel-default" id="panelAdmin">

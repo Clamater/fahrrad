@@ -10,9 +10,120 @@
             - Overlay Einstellungen
 -->
 
+<!-- ################################### Overlay Fahrer hinzufügen ##################################################-->
+<div id="addFahrer" title="Fahrer hinzufügen" style="display: none;">
+    <div>
+        <br>
+
+        <!-- Formular -->
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('fahrer') }}">
+            {{ csrf_field() }}
+
+            <!-- Name -->
+            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} col-md-12">
+                <label for="name" class="col-md-4 control-label">Name</label>
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-xs-8 pull-left validation-error-wrapper">
+                            <div id="validation-error-name" class="validation-error-msg "></div>
+                            <input id="fahrername" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                        </div>
+                        <!-- Button "Zufall"-->
+                        <div class="col-xs-4 pull-left">
+                            <input id="btnGenerateName" type="button" class="form-control btn-success" value="Zufall" autofocus>
+                        </div>
+                    </div>
+                    @if (isset($err_name))
+                        <div class="panel panel-danger">
+                            <div class="panel-heading">
+                                <small>{{ $err_name }}</small>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <!-- E-Mail -->
+            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} col-md-12 text-nowrap">
+                <label for="email" class="col-md-4 control-label">E-Mail Addresse <small>(optional)</small></label>
+
+                <div class="col-md-6 validation-error-wrapper">
+                    <div id ="validation-error-email" class="validation-error-msg"></div>
+                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autofocus>
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <!-- Wunschbetriebsmodus -->
+            <div class="form-group col-md-12">
+                <label class="col-md-4 control-label">Wunschbetriebsmodus</label>
+                <div class="col-md-6">
+                    <div class="radio"><label><input type="radio" name="betriebsmodus" value="1" checked>Streckenmodus</label></div>
+                    <div class="radio"><label><input type="radio" name="betriebsmodus" value="2">Konstantes Drehmoment</label></div>
+                    <div class="radio"><label><input type="radio" name="betriebsmodus" value="3">Konstante Leistung</label></div>
+                </div>
+            </div>
+
+            <!-- Größe -->
+            <div class="form-group{{ $errors->has('groesse') ? ' has-error' : '' }} col-md-12">
+                <label for="groesse" class="col-md-4 control-label">Gr&ouml;&szlig;e <small>(optional)</small></label>
+
+                <div class="col-md-6 validation-error-wrapper">
+                    <div id="validation-error-groesse" class="validation-error-msg"></div>
+                    <input id="groesse" type="text" class="form-control" name="groesse" value="{{ old('groesse') }}" placeholder="1.80" autofocus>
+
+                    @if ($errors->has('groesse'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('groesse') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <!-- Gewicht -->
+            <div class="form-group {{ $errors->has('gewicht') ? 'has-error' : '' }} col-md-12">
+                <label for="gewicht" class="col-md-4 control-label">Gewicht <small>(optional)</small></label>
+
+                <div class="col-md-6 validation-error-wrapper">
+                    <div id="validation-error-gewicht" class="validation-error-msg"></div>
+                    <input id="gewicht" type="text" class="form-control" name="gewicht" value="{{ old('gewicht') }}" placeholder="80" autofocus>
+
+                    @if ($errors->has('gewicht'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('gewicht') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('groesse') ? ' has-error' : '' }} col-md-12">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-3">
+                        <!-- Button "Hinzufügen" -->
+                        <button type="button" class="btn btn-primary" id="btnSubmitAddFahrer">Hinzufügen</button>
+                    </div>
+                    <div class="col-md-3">
+                        <!-- Button "Hilfe" -->
+                        <button type="button" class="btn btn-default" id="btnHilfeFahrer">Hilfe</button>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- #################################### Benutzerdokumentation #####################################################-->
 
-<!-- Benutzerdokumentation Fahrer hinzufügen -->
+<!-- Benutzerdokumentation Overlay "Fahrer hinzufügen" -->
 <div id="hilfeFahrer" title="Hilfe" style="display:none;">
     <h3><b>Fahrer hinzufügen</b></h3><hr/>
     <p>Um einen Fahrer hinzuzufügen muss das Formular ausgefüllt werden:</p><br>
@@ -26,13 +137,14 @@
         Fahrer kann aus ingesamt drei verschiedenen Betriebsmodi auswählen:
             <ol>
                 <li><b>Streckenmodus:</b> In diesem Modus fährt der Fahrer eine virtuelle Strecke ab. Die Strecke ist
-                    in Abschnitte gegliedert. Jeder Abschnitt hat eine andere Steigung. So hat der Fahrer das Gefühl, dass
-                    er mal bergauf und mal bergab fährt. Um es möglichst realistisch wirken zu lassen, wird anhand der Größe
-                    und des Gewichtes des Fahreres noch zusätzlich der Windwiderstand berechnet.</li>
+                    in Abschnitte gegliedert. Jeder Abschnitt hat eine andere Steigung. So hat der Fahrer das Gefühl,
+                    dass er mal bergauf und mal eine gerade Strecke entlang fährt. Um es möglichst realistisch wirken zu
+                    lassen, wird anhand der Größe und des Gewichtes des Fahreres noch zusätzlich der Windwiderstand
+                    berechnet.</li>
                 <li><b>Konstante Leistung:</b> In diesem Betriebsmodus erbringt der Fahrer eine konstante Leistung. Um
-                    dies zu Erreichen wird die Gegenkraft automatisch geregelt.<br>Tritt der Fahrer langsam, ist die
-                    Gegenkraft entsprechend hoch und das Treten fällt dem Fahrer schwer.<br>Tritt der Fahrer hingegen schnell
-                    , dann ist die Gegenkraft geringer und das Treten somit leichter.</li>
+                    dies zu erreichen wird die Gegenkraft automatisch geregelt.<br>Tritt der Fahrer langsam, ist die
+                    Gegenkraft entsprechend hoch und das Treten fällt dem Fahrer schwer.<br>Tritt der Fahrer hingegen
+                    schnell, dann ist die Gegenkraft geringer und das Treten somit leichter.</li>
                 <li><b>Konstantes Drehmoment:</b> In diesem Betriebsmodus ist die Gegenkraft immer gleich. Je nachdem
                     wie schnell der Fahrer tritt, erzeugt er eine höhere oder niedrigere Leistung. Das Treten fällt ihm
                     jedoch immer gleich schwer bzw. leicht. </li>
@@ -45,7 +157,7 @@
     </ul>
 </div>
 
-<!-- Benutzerdokumentation Tabelle -->
+<!-- Benutzerdokumentation Datenbank (Fahrertabelle) -->
 <div id="hilfeTabelle" title="Hilfe" style="display: none;">
     <h3><b>Fahrertabelle</b></h3><hr/>
     <p>In dieser Tabelle werden alle bereits registrierten Fahrer angezeigt.<br>In den Spalten sind folgende
@@ -57,7 +169,7 @@
         <li><u>Email:</u> Email-Adresse des jeweiligen Fahrers</li>
         <li><u>Gewicht:</u> Gewicht des jeweiligen Fahrers</li>
         <li><u>Größe:</u> Größe des jeweiligen Fahrers</li>
-        <li><u>Betriebsmodus:</u> Hier ist der gewünschte Betriebsmodus des Fahrers eingetragen. Dieser kann
+        <li><u>Wunschbetriebsmodus:</u> Hier ist der gewünschte Betriebsmodus des Fahrers eingetragen. Dieser kann
             über die Dropdown-Liste geändert werden und wird bei der Zuordnung automatisch übernommen.</li>
         <li><u>Button zur Löschung des gesamten Fahrerdatensatzes:</u> Dieser wird somit aus der Datenbank entfernt
         und kann auch nicht wiederhergestellt werden.</li>
@@ -69,21 +181,23 @@
 
     <p>Mithilfe des Buttons "Fahrer hinzufügen" kann ein neuer Datensatz erstellt werden.<br></p>
 
-    Mit der Suchfunktion kann nach dem Datensatz eines bestimmten Fahrers gesucht werden. Dazu muss lediglich
+    <p>Mit der Suchfunktion kann nach dem Datensatz eines bestimmten Fahrers gesucht werden. Dazu muss lediglich
     der Name des gesuchten Fahrers in das Suchfeld eingegeben werden.</p>
 </div>
 
-<!-- Benutzerdokumentation inaktives Fahrrad -->
+<!-- Benutzerdokumentation Fahrrad inaktiv -->
 <div id="hilfeInaktiv" title="Hilfe" style="display: none;">
     <h3><b>Fahrrad ist inaktiv</b></h3><hr/>
-    <p>Dieses Fahrrad wird aktuell nicht benutzt und ist somit inaktiv.<br>
-    Um einen Fahrer zuzuordnen muss er zunächst in der Tabelle rechts über den Button in der ersten Spalte markiert
-        werden. Daraufhin muss der Button "Zuordnung hinzufügen" geklickt werden.<br>
-        Nach dem Zuordnen wird das Fahrrad als aktiv gekennzeichnet, indem die Fahrerinformationen
+    <p>Dieses Fahrrad wird aktuell nicht benutzt und ist somit inaktiv.<br>Es gibt zwei Möglichkeiten einen Fahrer dem
+        Fahrrad zuzuordnen:<p>
+    <ul>Um einen Fahrer zuzuordnen muss er zunächst in der Tabelle rechts über den Button in der ersten Spalte markiert
+        werden. Daraufhin muss der Button "Zuordnung hinzufügen" geklickt werden.</ul>
+    <ul>Alternativ kann ein Fahrerdatensatz aus der Tabelle einfach per Drag´n Drop auf das Fahrrad gezogen werden.</ul>
+    <p>Nach dem Zuordnen wird das Fahrrad als aktiv gekennzeichnet, indem die Fahrerinformationen
         angezeigt werden.</p>
 </div>
 
-<!-- Benutzerdokumentation zugeordnetes Fahrrad -->
+<!-- Benutzerdokumentation Fahrrad aktiv -->
 <div id="hilfeAktiv" title="Hilfe" style="display: none;">
     <h3><b>Fahrrad ist aktiv</b></h3><hr/>
     <p>Diesem Fahrrad ist ein Fahrer zugeordnet und es wird somit aktiv benutzt.<br>Es werden
@@ -91,16 +205,16 @@
     <ul>
         <li><b><u>Fahrer:</u></b> Der Name des Fahrers</li>
         <li><b><u>Geschwindigkeit:</u></b> Die aktuelle Geschwindigkeit in Kilometern pro Stunde</li>
-        <li><b><u>Gesamtleistung:</u></b> Die Leistung, die der Fahrer ingesamt erzeugt hat, in Kilowatt pro Stunde</li>
+        <li><b><u>Aktuelle Leistung:</u></b> Die Leistung, die der Fahrer aktuell erzeugt, in Watt</li>
         <li><b><u>Zurückgelegte Strecke:</u></b> Die gefahrene Strecke in Kilometern</li>
-        <li><b><u>Fahrdauer:</u></b> Die Zeit, die der Fahrer bereits fährt, in Minuten</li>
+        <li><b><u>Fahrdauer:</u></b> Die Zeit, die der Fahrer bereits dem Fahrrad zugeordnet ist, in Minuten</li>
         <li><b><u>Betriebsmodus:</u></b> Es stehen drei verschiedene Betriebsmodi zur Auswahl,
             die über die Dropdown-Liste eingestellt werden können:
             <ol>
                 <li><b>Streckenmodus:</b> In diesem Modus fährt der Fahrer eine virtuelle Strecke ab. Die Strecke ist
                 in Abschnitte gegliedert. Jeder Abschnitt hat eine andere Steigung. So hat der Fahrer das Gefühl, dass
-                er mal bergauf und mal bergab fährt. Um es möglichst realistisch wirken zu lassen, wird anhand der Größe
-                und des Gewichtes des Fahreres noch zusätzlich der Windwiderstand berechnet.</li>
+                er mal bergauf und mal eine gerade Strecke fährt. Um es möglichst realistisch wirken zu lassen, wird
+                anhand der Größe und des Gewichtes des Fahreres noch zusätzlich der Windwiderstand berechnet.</li>
                 <li><b>Konstante Leistung:</b> In diesem Betriebsmodus erbringt der Fahrer eine konstante Leistung. Um
                 dies zu Erreichen wird die Gegenkraft automatisch geregelt.<br>Tritt der Fahrer langsam, ist die
                 Gegenkraft entsprechend hoch und das Treten fällt dem Fahrer schwer.<br>Tritt der Fahrer hingegen schnell
@@ -178,107 +292,6 @@
 <div id="dialogEinstellungenSpeichern" title="Warnung" style="display: none;">
     <h3><b>Einstellungen Speichern</b></h3><hr/>
     <p>Sollen die Einstellungen wirklich gespeichert werden?</p>
-</div>
-
-<!-- #################################### Overlay Fahrer hinzufügen ################################################-->
-<div id="addFahrer" title="Fahrer hinzufügen" style="display: none;">
-    <div>
-        <br>
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('fahrer') }}">
-            {{ csrf_field() }}
-
-            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} col-md-12">
-                <label for="name" class="col-md-4 control-label">Name</label>
-
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-xs-8 pull-left validation-error-wrapper">
-                            <div id="validation-error-name" class="validation-error-msg "></div>
-                            <input id="fahrername" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-                        </div>
-                        <div class="col-xs-4 pull-left">
-                            <input id="btnGenerateName" type="button" class="form-control btn-success" value="Zufall" autofocus>
-                        </div>
-                    </div>
-                    @if (isset($err_name))
-                        <div class="panel panel-danger">
-                            <div class="panel-heading">
-                                <small>{{ $err_name }}</small>
-                            </div>
-                        </div>
-                    @endif
-                    <div class="clear"></div>
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} col-md-12 text-nowrap">
-                <label for="email" class="col-md-4 control-label">E-Mail Addresse <small>(optional)</small></label>
-
-                <div class="col-md-6 validation-error-wrapper">
-                    <div id ="validation-error-email" class="validation-error-msg"></div>
-                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autofocus>
-
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('email') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group col-md-12">
-                <label class="col-md-4 control-label">Wunschbetriebsmodus</label>
-                <div class="col-md-6">
-                    <div class="radio"><label><input type="radio" name="betriebsmodus" value="1" checked>Streckenmodus</label></div>
-                    <div class="radio"><label><input type="radio" name="betriebsmodus" value="2">Konstantes Drehmoment</label></div>
-                    <div class="radio"><label><input type="radio" name="betriebsmodus" value="3">Konstante Leistung</label></div>
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('groesse') ? ' has-error' : '' }} col-md-12">
-                <label for="groesse" class="col-md-4 control-label">Gr&ouml;&szlig;e <small>(optional)</small></label>
-
-                <div class="col-md-6 validation-error-wrapper">
-                    <div id="validation-error-groesse" class="validation-error-msg"></div>
-                    <input id="groesse" type="text" class="form-control" name="groesse" value="{{ old('groesse') }}" placeholder="1.80" autofocus>
-
-                    @if ($errors->has('groesse'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('groesse') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group {{ $errors->has('gewicht') ? 'has-error' : '' }} col-md-12">
-                <label for="gewicht" class="col-md-4 control-label">Gewicht <small>(optional)</small></label>
-
-                <div class="col-md-6 validation-error-wrapper">
-                    <div id="validation-error-gewicht" class="validation-error-msg"></div>
-                    <input id="gewicht" type="text" class="form-control" name="gewicht" value="{{ old('gewicht') }}" placeholder="80" autofocus>
-
-                    @if ($errors->has('gewicht'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('gewicht') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('groesse') ? ' has-error' : '' }} col-md-12">
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-primary" id="btnSubmitAddFahrer">Hinzufügen</button>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-default" id="btnHilfeFahrer">Hilfe</button>
-                    </div>
-                    <div class="col-md-2"></div>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
 
 <!-- ##################################### Overlay Einstellungen ####################################################-->

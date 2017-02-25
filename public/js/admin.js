@@ -3,8 +3,11 @@
  * Teilverantwortlich:
  *      Vanessa Ferrarello
  *          Dialoge
+ *          Zufallsnamen
  *      Clara Terbeck
+ *          Dialoge
  *          DataTable Initialisierung
+ *          Zufallsnamen
  */
 
 // WICHTIG: IP ändern, oder einfach localhost nehmen!

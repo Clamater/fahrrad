@@ -494,6 +494,7 @@ body{
     border: solid 1px;
 }
 
+/* ##### Panels ##### */
 #panelAdmin {
     border: solid 1px;
     border-radius: 4px;
@@ -569,13 +570,12 @@ body{
     background: #72B128;
 }
 
-/* ##### Fahrer #####*/
+/* ##### Fahrertabelle #####*/
 #fahrerNav {
     margin-top: -25px;
     margin-left: 15px;
 }
 
-/* ##### Datenbanktabelle #####*/
 .table {
     border-color: black;
 }
