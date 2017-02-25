@@ -1,9 +1,12 @@
+<!-- Hauptverantwortlich: Vanessa Ferrarello -->
+
 <!-- Anzeige des Highscores -->
 <div class="panel panel-default pull-left highscore-panel">
     <div class="panel-heading panel-heading-zd">
         <h3 class="panel-title panel-title-zd">Highscore</h3>
     </div>
     <div class="panel-body panel-body-zd">
+        <!-- 3 Platzierungen, die jeweils aus einem Icon, dem Fahrernamen und dem zugehörigen Wert bestehen -->
         <div class="row highscore-platzierung"> <!-- 1.Platz -->
             <div class="pull-left highscore-medaille-wrapper">
                 <img src="{{URL::asset('/img/highscore_1.png')}}" alt="1.Platz" class="highscore-medaille">

@@ -1,3 +1,5 @@
+<!-- Hauptverantwortlich: Vanessa Ferrarello -->
+
 <!-- Die Diagramme werden in public > js > central.js generiert  -->
 <div class ="container-fluid">
     <!-- Anzeige des Streckenmodus  -->

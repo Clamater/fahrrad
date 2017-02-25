@@ -1,3 +1,5 @@
+<!-- Hauptverantwortlich: Vanessa Ferrarello -->
+
 <!-- Anzeige der Fahrerinformationen -->
 <div class ="container-fluid">
     @foreach($fahrraeder as $fahrrad)
@@ -20,7 +22,7 @@
                             <span>Du bist seit längerer Zeit inaktiv.</span><br>
                             <span>Bitte fahre weiter, da du sonst in <div id="timeout-restzeit-{{ $fahrrad->id}}" style="display: inline"></div> sek. automatisch abgemeldet wirst.</span>
                         </div>
-                    </div>
+                </div>
                 </div>
                 <!-- Anzeige der Fahrerinformationen -->
                 <div id="fahrrad-aktiv-wrapper-{{ $fahrrad->id}}" style="display: none;">

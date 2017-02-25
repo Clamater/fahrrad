@@ -1,9 +1,23 @@
 /*
  * Hauptverantwortlich: Vanessa Ferrarello & Clara Terbeck
+ *
+ * Clara Terbeck:
+ *  - Zentralrechner
+ *  - Dialoge
+ *
+ *
+ * Vanessa Ferrarello:
+ *  - Zentrales Display
+ *  - Zentralrechner - Login
+ *  - Zentralrechner - Einstellungen
+ *  - Dialoge - Warn- und Fehler-Dialoge
+ *  - Validierung
+ *  - Media Queries Zentrales Display
+ *  - Overlay
  */
 
 
-/* ############################## General ##################################### */
+/* ################################################## General ###################################################### */
 * {}
 
 body{
@@ -57,7 +71,7 @@ body{
     box-shadow: 5px 5px 5px #999;
 }
 
-/* ############################## Zentrales Display ##################################### */
+/* ############################################# Zentrales Display ################################################# */
 
 .panel-heading-zd{
     background: #AAB2BD !important;
@@ -465,18 +479,7 @@ body{
     stroke: #CCD1D9;
 }
 
-/* ############################## Login ##################################### */
-.alertFalschesPasswort{
-    background-color: #D8334A;
-    border: 1px solid black;
-    border-radius: 4px;
-    color: white;
-    margin-bottom: 20px;
-    padding: 10px;
-    text-align: center;
-}
-
-/* ############################## Zentrales Display ##################################### */
+/* ###########################################  Zentralrechner  ##################################################### */
 
 .btn {
     border: solid 1px;
@@ -527,6 +530,17 @@ body{
     left: 0;
     position: absolute;
     width: 100%;
+}
+
+/* #### Login #### */
+.alertFalschesPasswort{
+    background-color: #D8334A;
+    border: 1px solid black;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
 }
 
 /* ##### Fahrradinformationen #####*/
@@ -602,7 +616,58 @@ body{
     border-color: #CAECA7 !important;
 }
 
-    /* ##### Dialoge #####*/
+/* #### Einstellungen #### */
+
+.tab-wrapper{
+    min-height: 400px !important;
+    padding:10px;
+}
+
+#einstellungen{
+    padding:10px 10px 20px 10px;
+}
+
+.einstellungen.ui-dialog{
+    background-color: #F5F7FA;
+    border: 2px solid black !important;
+    width: 1000px !important;
+}
+
+.einstellungen.ui-dialog > .ui-widget-header{
+    color: white;
+    background-color: #72B128;
+    border-color: black;
+}
+
+.einstellungen-betriebsmodus{
+    padding: 20px !important;
+}
+
+.streckenauswahl-wrapper{
+    padding-bottom:20px;
+}
+
+#streckenvorschau{
+    height:300px;
+}
+
+#infobox{
+    padding-left:0px;
+}
+#infobox li{
+    list-style-type: none;
+    padding: 2px;
+}
+
+/* ############################################  Dialoge  ###########################################################*/
+
+.ui-widget-overlay.custom-overlay {
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1040;
+}
+
+/* #### Integrierte Benutzerdokumentation / Hilfe-Dialoge ### */
 .hilfe.ui-dialog {
     width: 600px !important;
     background-color: #F5F7FA;
@@ -615,6 +680,21 @@ body{
     color: white;
 }
 
+/* ### "Fahrer hinzufügen" -Dialog ### */
+
+.addFahrer.ui-dialog{
+    background-color: #F5F7FA;
+    border: 2px solid black !important;
+    width: 650px !important;
+}
+
+.addFahrer.ui-dialog > .ui-widget-header{
+    color: white;
+    background-color: #72B128;
+    border-color: black;
+}
+
+/* ### Warn- und Fehler-Dialoge ### */
 .warnung.ui-dialog{
     background-color: #F5F7FA;
     border:2px solid black !important;
@@ -647,35 +727,7 @@ body{
     border-color: black;
 }
 
-.addFahrer.ui-dialog{
-    background-color: #F5F7FA;
-    border: 2px solid black !important;
-    width: 650px !important;
-}
-
-.addFahrer.ui-dialog > .ui-widget-header{
-    color: white;
-    background-color: #72B128;
-    border-color: black;
-}
-
-.einstellungen.ui-dialog{
-    background-color: #F5F7FA;
-    border: 2px solid black !important;
-    width: 1000px !important;
-}
-
-.einstellungen.ui-dialog > .ui-widget-header{
-    color: white;
-    background-color: #72B128;
-    border-color: black;
-}
-
-.ui-widget-overlay.custom-overlay {
-    background-color: black;
-    opacity: 0.5;
-    z-index: 1040;
-}
+/* ############################################# Validierung ####################################################### */
 
 .validation-error-msg{
     color:red;
@@ -690,37 +742,252 @@ body{
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 0, 13, 0.6);
 }
 
-/* ### Einstellungen ### */
-.tab-wrapper{
-    min-height: 400px !important;
-    padding:10px;
+
+/* ###################################### Media Queries Zentrales Display ######################################### */
+
+@media screen and (max-width: 1900px) {
+    .highscore-panel{
+        height: inherit;
+        min-height: 250px;
+        min-width: 250px;
+        height:inherit;
+        min-height:350px;
+    }
+    .highscore-medaille-wrapper{
+        width:15%;
+        margin-right:2%;
+    }
+    .highscore-name-wrapper{
+        width:83%;
+    }
+    .highscore-wert-wrapper{
+        text-align: left;
+        width:83%;
+
+    }
+    .highscore-wert{
+        line-height: 0;
+    }
+    .highscore-medaille{
+        margin-top:20%;
+    }
+    .circle_headline{
+        font-size: 15pt;
+        width:136px;
+    }
+    .batterie-panel{
+        min-height:350px;
+    }
+    .tagesstatistik-panel{
+        height:350px;
+    }
 }
 
-#einstellungen{
-    padding:10px 10px 20px 10px;
+@media screen and (max-width: 1600px)  {
+
+    .panel-title-zd{
+        font-size: 18pt;
+    }
+    .panel-body-zd{
+        font-size: 14pt;
+        padding: 10px 15px 10px 15px;
+
+    }
+    .fahrrad-information-panel{
+        min-height: inherit ! important;
+
+    }
+    .highscore-panel{
+        max-width: 280px;
+        min-height:300px;
+        height:300px;
+        min-width:48% !important;
+    }
+    .highscore-name-wrapper{
+        width:78%;
+        margin-left: 5%;
+    }
+    .highscore-wert-wrapper{
+        width:78%;
+        margin-left: 5%;
+    }
+    .tagesstatistik-panel .panel-body-zd{
+        padding-top:20px;
+    }
+    .tagesstatistik-panel{
+        min-width: 97% !important;
+        margin-bottom:20px !important;
+        height:280px;
+
+    }
+    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
+        float:left;
+        width:25%;
+        margin:auto;
+    }
+    .batterie-panel{
+        min-height:300px;
+        min-width:47% !important;
+    }
+    .circle_headline{
+        font-size: 15pt;
+        width:140px;
+    }
+    .circle_value{
+        font-size:18pt;
+    }
+    .highscore-panel .panel-body-zd{
+        width:100%;
+        margin:auto;
+        padding: 15px 20px 15px 20px;
+    }
+    .highscore-medaille-wrapper{
+        width:inherit;
+    }
+    .highscore-wert-wrapper{
+        margin-left: 10px;
+    }
+    .highscore-name-wrapper{
+        margin-left: 10px;
+    }
 }
 
-.einstellungen-betriebsmodus{
-    padding: 20px !important;
+@media screen and (max-width: 1024px) {
+    .softwaretitel-wrapper .logo img {
+        margin-top: 5%;
+    }
+    .logo{
+        float:left !important;
+        width:100%;
+        margin:auto;
+    }
+    .logo img{
+        float:left !important;
+    }
+    .panel{
+        min-width: 96% !important;
+        margin-bottom:20px !important;
+    }
+    .panel-title-zd{
+        font-size: 16pt;
+    }
+    .panel-body-zd{
+        font-size: 12pt;
+        padding: 10px 15px 10px 15px;
+    }
+    .fahrrad-information-panel{
+
+    }
+    .tagesstatistik-panel{
+        min-height: 320px;
+
+    }
+    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
+        float:left;
+        width:50%;
+        padding-left:2%;
+
+    }
+    .circle{
+        height: 100px;
+        width: 100px;
+    }
+    .circle_headline{
+        font-size: 14pt;
+        margin-bottom:10px;
+        width: inherit;
+
+    }
+    .circle_value{
+        font-size:14pt;
+    }
+    .batterie-panel{
+        height:300px;
+        min-width:47% !important;
+    }
+    .highscore-panel{
+        min-width:47% !important;
+    }
 }
 
-.streckenauswahl-wrapper{
-    padding-bottom:20px;
+@media screen and (max-width: 600px) {
+    .softwaretitel{
+        display: inline-block;
+        font-size: 16pt;
+    }
+    .panel{
+        min-width: 95% !important;
+        margin-bottom:20px !important;
+
+    }
+    .tagesstatistik-panel{
+        min-height: 320px;
+    }
+    .batterie-panel{
+        min-height:280px;
+    }
+    .highscore-panel .panel-body-zd{
+        width:100%;
+        margin:auto;
+        padding: 15px 20px 15px 20px;
+    }
+    .highscore-medaille-wrapper{
+        width:inherit;
+    }
+    .highscore-wert-wrapper{
+        margin-left: 10px;
+    }
+    .highscore-name-wrapper{
+        margin-left: 10px;
+    }
+
 }
 
-#streckenvorschau{
-    height:250px;
+@media screen and (max-width: 320px) {
+    .softwaretitel{
+        font-size: 16pt;
+    }
+    .fahrerinformation {
+        padding:5px !important;
+    }
+    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
+        padding-left:0px;
+    }
+    .highscore-panel .panel-body-zd{
+        width:100%;
+        margin:auto;
+        padding: 15px 20px 15px 20px;
+    }
+    .highscore-name{
+        margin-left: 5%;
+    }
+    .highscore-wert{
+        margin-left:5%;
+    }
+    .circle_headline{
+        font-size: 14pt;
+        margin-bottom:10px;
+        width:100%;
+
+    }
+    .circle_value{
+        font-size: 14pt;
+    }
+    .circle{
+        border-width: 3px;
+        height:90px;
+        width:90px;
+
+    }
+    .batterie-panel{
+        height:200px;
+    }
 }
 
-#infobox{
-    padding-left:0px;
-}
-#infobox li{
-    list-style-type: none;
-    padding: 2px;
-}
-
-/* ### Overlay beim Zugriff von mobilen Geräten ### */
+/* ###############################################  Overlay  ######################################################## */
+/* Dient dazu, die Darstellung des Zentralen Displays beim Zugriff von mobilen Geräten zu verhindern.
+ * Es wird, statt den Inhalten des Zentralen Displays, ein alternativer Inhalt angezeigt, der in der Datei app.blade.php
+ * angepasst werden kann.*/
 
 .smartphone-overlay{
     display: none;
@@ -732,8 +999,10 @@ body{
     display: none;
 }
 
+/* Wichtig! Um das Overlay nicht einzublenden, muss folgender Code auskommentiert werden. /*
+
 /*
-@media screen and (max-device-width: 1366px)  {
+@media screen and (max-device-width: 1024px)  {
     #app{
        display: none;
     }
@@ -757,233 +1026,3 @@ body{
     }
 }
 */
-
-/* ### Media Queries ### */
-
-@media screen and (max-device-width: 1900px) {
-    .highscore-panel{
-        height: inherit;
-        min-height: 250px;
-        min-width: 250px;
-    }
-
-    .highscore-medaille-wrapper{
-        width:15%;
-        margin-right:2%;
-    }
-    .highscore-name-wrapper{
-        width:83%;
-    }
-    .highscore-wert-wrapper{
-        text-align: left;
-        width:83%;
-
-    }
-    .highscore-wert{
-        line-height: 0;
-    }
-
-    .highscore-medaille{
-        margin-top:20%;
-    }
-
-    .circle_headline{
-        font-size: 15pt;
-        width:136px;
-    }
-
-}
-
-@media screen and (max-device-width: 1600px) {
-
-    .panel-title-zd{
-        font-size: 20pt;
-    }
-
-    .panel-body-zd{
-        font-size: 16pt;
-        padding: 10px 15px 10px 15px;
-    }
-
-    .fahrrad-information-panel{
-        min-height: 250px;
-    }
-
-    .circle{
-        height: 125px;
-        margin:15% auto 0;
-        width: 125px;
-    }
-
-
-    .circle_value{
-        font-size:18pt;
-    }
-
-}
-@media screen and (max-device-width: 1300px)  {
-
-    .panel-title-zd{
-        font-size: 18pt;
-    }
-
-    .panel-body-zd{
-        font-size: 14pt;
-        padding: 10px 15px 10px 15px;
-    }
-
-    .tagesstatistik-panel{
-        min-height:400px;
-        width:40%;
-    }
-
-    .highscore-panel{
-        max-width: 280px;
-    }
-    .highscore-name-wrapper{
-        width:78%;
-        margin-left: 5%;
-    }
-    .highscore-wert-wrapper{
-        width:78%;
-        margin-left: 5%;
-    }
-
-    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
-        float:left;
-        width:50%;
-    }
-
-
-    .circle_headline{
-        font-size: 15pt;
-        width:140px;
-    }
-    .circle_value{
-        font-size:18pt;
-    }
-
-}
-
-@media screen and (max-device-width: 1065px) {
-
-    .panel{
-        min-width: 350px !important;
-        margin-bottom:20px !important;
-
-    }
-
-    .panel-title-zd{
-        font-size: 16pt;
-    }
-
-    .panel-body-zd{
-        font-size: 12pt;
-        padding: 10px 15px 10px 15px;
-    }
-
-    .tagesstatistik-panel{
-        min-width: 300px;
-        min-height:350px !important;
-    }
-
-    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
-        float:left;
-        width:50%;
-
-    }
-
-    .circle{
-        height: 100px;
-        width: 100px;
-    }
-
-    .circle_headline{
-        font-size: 14pt;
-        margin-bottom:10px;
-        width:140px;
-
-    }
-    .circle_value{
-        font-size:14pt;
-    }
-
-    .batterie-panel{
-        height:200px;
-    }
-
-}
-
-@media screen and (max-device-width: 600px) {
-    .softwaretitel{
-        font-size: 18pt;
-    }
-
-    .panel{
-        min-width: 330px !important;
-        margin-bottom:20px !important;
-
-    }
-}
-
-@media screen and (max-device-width: 320px) {
-
-    .panel{
-        min-width: 280px !important;
-        margin-bottom:20px !important;
-
-    }
-
-    .softwaretitel{
-        font-size: 16pt;
-    }
-
-
-    .fahrerinformation {
-        padding:5px !important;
-    }
-
-
-    .tagesstatistik-panel .panel-body-zd div div .col-lg-3{
-        padding-left:0px;
-    }
-
-    .circle_headline{
-        font-size: 12pt;
-        width:100px;
-    }
-    .circle_value{
-        font-size: 14pt;
-    }
-
-    .circle{
-        border-width: 3px;
-
-    }
-
-    .batterie-panel{
-        height:200px;
-    }
-
-}
-
-/* #################################### Mobile ################################## */
-#fahrrad-information-wrapper-mobile{
-    height: 25%;
-}
-
-.fahrrad-wrapper-mobile{
-    background-color: ghostwhite;
-    color: #000;
-    height: 25%;
-    margin-top: 50px;
-    margin-left: 2%;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-}
-
-#track-wrapper-mobile {
-    height: 25%;
-    width: 100%;
-}

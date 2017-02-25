@@ -1,3 +1,18 @@
+<!-- Hauptverantwortlich: Vanessa Ferrarello & Clara Terbeck
+
+        Clara Terbeck:
+            - Benutzerdokumentation
+            - Overlay Fahrer hinzufügen
+
+        Vanessa Ferrarello:
+            - Benutzerdokumentation - Einstellungen
+            - Fehler- und Warnmeldungen
+            - Overlay Einstellungen
+-->
+
+<!-- #################################### Benutzerdokumentation #####################################################-->
+
+<!-- Benutzerdokumentation Fahrer hinzufügen -->
 <div id="hilfeFahrer" title="Hilfe" style="display:none;">
     <h3><b>Fahrer hinzufügen</b></h3><hr/>
     <p>Um einen Fahrer hinzuzufügen muss das Formular ausgefüllt werden:</p><br>
@@ -30,6 +45,7 @@
     </ul>
 </div>
 
+<!-- Benutzerdokumentation Tabelle -->
 <div id="hilfeTabelle" title="Hilfe" style="display: none;">
     <h3><b>Fahrertabelle</b></h3><hr/>
     <p>In dieser Tabelle werden alle bereits registrierten Fahrer angezeigt.<br>In den Spalten sind folgende
@@ -57,6 +73,7 @@
     der Name des gesuchten Fahrers in das Suchfeld eingegeben werden.</p>
 </div>
 
+<!-- Benutzerdokumentation inaktives Fahrrad -->
 <div id="hilfeInaktiv" title="Hilfe" style="display: none;">
     <h3><b>Fahrrad ist inaktiv</b></h3><hr/>
     <p>Dieses Fahrrad wird aktuell nicht benutzt und ist somit inaktiv.<br>
@@ -66,6 +83,7 @@
         angezeigt werden.</p>
 </div>
 
+<!-- Benutzerdokumentation zugeordnetes Fahrrad -->
 <div id="hilfeAktiv" title="Hilfe" style="display: none;">
     <h3><b>Fahrrad ist aktiv</b></h3><hr/>
     <p>Diesem Fahrrad ist ein Fahrer zugeordnet und es wird somit aktiv benutzt.<br>Es werden
@@ -113,7 +131,7 @@
     <p>Des Weiteren beinhaltet der Reiter <b><u>Info</u></b> Informationen über die Anwendung.</p>
 </div>
 
-<!-- Fehler- und Warnmeldungen -->
+<!-- #################################### Fehler- und Warnmeldungen ################################################-->
 <div id="dialogValidationFailed" title="Fehler" style="display: none;">
     <h3><b>Ungültige Eingaben</b></h3><hr/>
     <p>Der Fahrer kann nicht hinzugefügt werden. Bitte überprüfen Sie die Eingaben und versuchen Sie es erneut.</p>
@@ -162,6 +180,7 @@
     <p>Sollen die Einstellungen wirklich gespeichert werden?</p>
 </div>
 
+<!-- #################################### Overlay Fahrer hinzufügen ################################################-->
 <div id="addFahrer" title="Fahrer hinzufügen" style="display: none;">
     <div>
         <br>
@@ -262,7 +281,7 @@
     </div>
 </div>
 
-<!-- Einstellungen -->
+<!-- ##################################### Overlay Einstellungen ####################################################-->
 <div id="dialogEinstellungen" title="Einstellungen" style="display: none;">
     <div class="einstellungen-wrapper">
         <form class="form-horizontal" role="form" method="POST" action="">

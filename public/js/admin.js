@@ -512,6 +512,8 @@ $(document).ready(function () {
             enabled: false
         },
         xAxis: {
+           // visible: false,
+           // min:0.5,
             labels: {
                 formatter: function () {
                     if (window.strecke_vorschau_data.labels[this.value]) return window.strecke_vorschau_data.labels[this.value] + " m";
@@ -555,7 +557,7 @@ $(document).ready(function () {
             type: 'area',
             color: '#AAB2BD',
             enableMouseTracking: false,
-            zIndex: 5
+            zIndex: 5,
         }]
     });
 

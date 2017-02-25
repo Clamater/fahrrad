@@ -1,3 +1,5 @@
+<!-- Hauptverantwortlich: Vanessa Ferrarello -->
+
 <!-- Anzeige der Tagesstatistik -->
 <div class="panel panel-default pull-left tagesstatistik-panel">
     <div class="panel-heading panel-heading-zd">

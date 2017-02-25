@@ -33,7 +33,8 @@
     </script>
 </head>
 <body>
-    <!-- Overlay beim Zugriff von mobilen Geräten -->
+    <!-- Overlay, um die Darstellung beim Zugriff von mobilen Geräten auszublenden.
+    Muss in der style.css entsprechend ein/auskommentiert werden -->
     <div class="smartphone-overlay">
         <img src="{{URL::asset('/img/whs_logo.png')}}" alt="Logo" class="smartphone-overlay-logo">
         <div class="smartphone-overlay-text">

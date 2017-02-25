@@ -1,3 +1,6 @@
+<!-- Hauptverantwortlich: Vanessa Ferrarello -->
+
+<!-- Zentrales Display -->
 @extends("layouts.app")
 
 @section("title")
@@ -5,23 +8,24 @@
 @endsection
 
 @section("content")
-    {{-- Anzeige der Diagramme  --}}
+    <!-- Anzeige der Diagramme  -->
     @include("partial.charts")
 
-    {{-- Anzeige der Fahrerinformationen  --}}
+    <!-- Anzeige der Fahrerinformationen  -->
     @include("central.fahrrad-information")
 
     <div class ="container-fluid">
-        {{-- Anzeige der Tagesstatistik --}}
+        <!-- Anzeige der Tagesstatistik -->
         @include("central.tagesstatistik")
-        {{-- Anzeige der Highscore  --}}
+        <!-- Anzeige der Highscore  -->
         @include("central.highscore")
-        {{-- Anzeige der Batterieüberwachung  --}}
+        <!-- Anzeige der Batterieüberwachung  -->
         @include("central.batterieladung")
         <div class="clearfix"></div>
     </div>
 @endsection
 
+<!-- JavaScript -->
 @section("scripts")
     <script src="{{ asset("js/central.js") }}"></script>
 @endsection
